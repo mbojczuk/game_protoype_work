@@ -1,0 +1,8 @@
+parameters:
+  user_full_name: Michael Bojczuk # [First Name(s)] [Last Name]
+  links:
+    - https://github.com/mbojczuk/Unity-AStar
+    - https://github.com/mbojczuk/Ensemble-Regression-Python
+    - https://github.com/mbojczuk/Berkeley-AI-Pacman
+    - https://github.com/mbojczuk/AI-Techniques-CPP
+    - https://github.com/mbojczuk/ddllm_learning

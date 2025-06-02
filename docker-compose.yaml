@@ -1,0 +1,25 @@
+# Use root/example as user/password credentials
+services:
+  mongo:
+    image: mongo:latest
+    container_name: "llm_game"
+    logging:
+      options:
+        max-size: 1g
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "llm"
+      MONGO_INITDB_ROOT_PASSWORD: "llm"
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - local
+    restart: always
+
+volumes:
+  mongo_data:
+
+networks:
+  local:
+    driver: bridge
