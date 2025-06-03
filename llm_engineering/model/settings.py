@@ -20,4 +20,4 @@ class AppSettings(BaseSettings):
 settings = AppSettings()
 
 # Example usage: Accessing settings
-print(f"Connecting to MongoDB at {settings.MONGO_HOST}:{settings.MONGO_PORT}")
+# print(f"Connecting to MongoDB at {settings.MONGO_HOST}:{settings.MONGO_PORT}")
