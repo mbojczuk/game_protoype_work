@@ -4,6 +4,7 @@ from typing import Generic, Type, TypeVar
 from loguru import logger
 from pydantic import UUID4, BaseModel, Field
 from pymongo import errors
+from time import time
 
 from llm_engineering.database.mongo_connection import connection
 from llm_engineering.model.settings import settings
@@ -116,18 +117,21 @@ class NoSQLBaseDocument(BaseModel, Generic[T], ABC):
         - Otherwise, it **creates a new instance** and inserts it.
         """
         collection = _database[cls.get_collection_name()]
+        start_time = time()  # Start timing the operation
         try:
             instance = collection.find_one(filter_options)
             if instance:
+                logger.info(f"Document found in {time() - start_time:.2f} seconds")
                 return cls.from_mongo(instance)
 
             # Create and save a new document if no match is found
             new_instance = cls(**filter_options)
             new_instance = new_instance.save()
-            
+
+            logger.success(f"New document inserted in {time() - start_time:.3f}s")
             return new_instance
         except errors.OperationFailure:
-            logger.exception(f"Failed to retrieve document with filter options: {filter_options}")
+            logger.exception(f"MongoDB Failed to retrieve document with filter options: {filter_options}")
             raise
 
     @classmethod
