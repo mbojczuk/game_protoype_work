@@ -21,7 +21,10 @@ poetry add <package_name> # Add the dependancy to your project
 poetry install
 poetry show
 
+poetry env activate
+
 
 Steps:
-1. Implement Database and structure for NOSQL
+1. Implement Database and structure for NOSQL - done
+2. Test out the implementation of the ODM database
 2. Create crawler class following builder pattern

@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings
+from pydantic import ConfigDict
 
 class AppSettings(BaseSettings):
     """Configuration class for application settings using Pydantic."""
@@ -10,11 +11,8 @@ class AppSettings(BaseSettings):
     MONGO_PASSWORD: str = "llm"  # MongoDB password
     DATABASE_NAME: str = "llm_game"  # Target database name
 
-    class Config:
-        """Pydantic configuration settings."""
-        
-        ENV_PREFIX = "APP_"  # Prefix for environment variables (e.g., APP_MONGO_HOST)
-        ENV_FILE = ".env"  # Load settings from a .env file
+    model_config = ConfigDict(env_prefix="APP_", env_file=".env")
+
 
 # Instantiate settings
 settings = AppSettings()

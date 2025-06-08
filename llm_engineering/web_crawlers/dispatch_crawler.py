@@ -1,6 +1,8 @@
 import re
 from urllib.parse import urlparse
 from loguru import logger
+from github_crawler import GithubCrawler
+from base import BaseCrawler
 
 
 # The CrawlerDispatcher class is defines to manage and dispatch crawler instances based on given URLS and their domains
@@ -20,7 +22,7 @@ class CrawlerDispatcher:
         self.register("https://github.com", GithubCrawler)
         return self
 
-    # This methon retturns a crawler instance based on the URL provided.
+    # This method sets a crawler instance based on the URL provided.
     def register(self, domain: str, crawler: type[BaseCrawler]) -> None:
         parsed_domain = urlparse(domain)
         domain = parsed_domain.netloc

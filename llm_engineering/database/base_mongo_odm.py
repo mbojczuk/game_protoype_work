@@ -7,11 +7,11 @@ from pymongo import errors
 from time import time
 
 from llm_engineering.database.mongo_connection import connection
-from llm_engineering.model.settings import settings
+from llm_engineering.settings import settings
 
 # Set up the initial database connection
 try:
-    _database = connection.get_database(settings.MONGO_DATABASE_NAME)
+    _database = connection.get_database(settings.DATABASE_NAME)
 except Exception as e:
     logger.error(f"Failed to connect to MongoDB: {e}")
     raise e  # Raise an exception if the connection fails
