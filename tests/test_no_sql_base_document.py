@@ -6,6 +6,9 @@ from tqdm import tqdm
 from llm_engineering.database.mongo_connection import MongoDatabaseConnector
 from llm_engineering.database.base_mongo_odm import NoSQLBaseDocument
 
+# If no work run this command in the terminal
+# $env:PYTHONPATH="C:\projects\game_protoype_work" 
+
 # Mock Document Class for Testing
 @pytest.mark.usefixtures("mongo_connector")
 class ExampleDocument(NoSQLBaseDocument):

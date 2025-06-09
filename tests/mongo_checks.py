@@ -3,6 +3,8 @@ from llm_engineering.database.mongo_connection import connection
 from llm_engineering.settings import settings
 
 
+# $env:PYTHONPATH="C:\projects\game_protoype_work"
+
 class ExampleDocument(NoSQLBaseDocument):
     name: str
     document: str
@@ -42,3 +44,8 @@ if __name__ == "__main__":
     # Find a bulk of documents based on a filter since we passed a bunch of documents under name 0 then we should find a bunch
     found_docs = ExampleDocument.bulk_find(name="Test Document 0")
     print(f"Found documents: {found_docs}")
+
+    # Find a single document based on a filter
+    found_doc = ExampleDocument.find(name="Test Document 0")
+    print(f"Found single document: {found_doc}")
+# This script tests the MongoDB connection and basic CRUD operations using the NoSQLBaseDocument class.
