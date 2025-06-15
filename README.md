@@ -10,6 +10,15 @@ Set the version of py env
 pyenv local 3.11.8
 pyenv global 3.11.8
 
+Mongodb Image:
+mongosh --username llm --password llm --authenticationDatabase admin
+mongo -u llm -p llm --authenticationDatabase admin
+use llm_game
+show collections
+db.repositories.find().limit(5).pretty()
+
+
+
 
 
 Poetry:
